@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: mysite
+    env: docker
+    dockerfilePath: ./production.Dockerfile
+    repo: https://github.com/simranchawla124/book-recommender-system
+    region: oregon
+    branch: main
+    plan: free
+    dockerCommand: ./webdis.sh
+    numInstances: 2
+    scaling:
+      minInstances: 1
+      maxInstances: 3
+      targetMemoryPercent: 60
+      targetCPUPercent: 60
+    healthCheckPath: /
+    envVars:
+      - key: SECRET_KEY_BASE
+        sync: false # placeholder for a value to be added in the dashboard
+      - key: REDIS_HOST
+        fromService:
+          type: redis
+          name: lightning
+          property: host # available properties are listed below
+      - key: REDIS_PORT
+        fromService:
+          type: redis
+          name: lightning
+          property: port
+  - type: redis
+    name: lightning
+    ipAllowList: # required
+      - source: 0.0.0.0/0
+        description: everywhere
+    plan: free
