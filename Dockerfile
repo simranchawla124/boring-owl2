@@ -1,5 +1,5 @@
 FROM python:3.7
-COPY ./app
+COPY ./ app
 # copy from my current directory to a location called app
 # base image contains app folder containing our files
 WORKDIR /app
