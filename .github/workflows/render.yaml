@@ -3,15 +3,11 @@ services:
   - type: web
     name: webdis
     env: docker
-    repo: https://github.com/boring-owl2 # optional
+    #repo: https://github.com/boring-owl2 # optional
     region: oregon # optional (defaults to oregon)
     plan: individual # optional (defaults to starter)
     branch: main # optional (defaults to master)
     rootDir: webdis
     dockerCommand: ./webdis.sh # optional (defaults to Dockerfile command)
     numInstances: 3 # optional (defaults to 1)
-    gunicorn main:app \
-      --workers 1 \
-      --worker-class uvicorn.workers.UvicornWorker \
-      --bind 0.0.0.0:8443 \
-      --timeout 600
+   
