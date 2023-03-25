@@ -10,4 +10,19 @@ services:
     rootDir: webdis
     dockerCommand: ./webdis.sh # optional (defaults to Dockerfile command)
     numInstances: 3 # optional (defaults to 1)
-    
+  # A private Minio instance
+  - type: pserv
+    name: minio
+    env: docker
+    repo: https://github.com/render-examples/minio.git # optional
+    envVars:
+    - key: MINIO_ROOT_PASSWORD
+      generateValue: true # will generate a base64-encoded 256-bit secret
+    - key: MINIO_ROOT_USER
+      sync: false # placeholder for a value to be added in the dashboard
+    - key: PORT
+      value: 10000
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 10 # optional
