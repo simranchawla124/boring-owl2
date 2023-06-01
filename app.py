@@ -52,6 +52,7 @@ def recommend():
     #return suggestions
 @app.route('/loaderio-0339159fc8af6f665c03aa5f82f15e04.txt')  
 def test():
-    return send_file('loaderio-0339159fc8af6f665c03aa5f82f15e04.txt')
+    f = open("loaderio-0339159fc8af6f665c03aa5f82f15e04.txt", "r")
+    return f.read()
 if __name__=='__main__':
     app.run(debug=True)
