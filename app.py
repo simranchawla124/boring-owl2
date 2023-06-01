@@ -50,5 +50,8 @@ def recommend():
     # return suggestions
     #return the title which is similar to the index number that we got from similar items
     #return suggestions
+@app.route('/loaderio-0339159fc8af6f665c03aa5f82f15e04.txt')  
+def test():
+    return send_file('loaderio-0339159fc8af6f665c03aa5f82f15e04.txt')
 if __name__=='__main__':
     app.run(debug=True)
