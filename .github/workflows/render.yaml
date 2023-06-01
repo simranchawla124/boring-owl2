@@ -4,7 +4,7 @@ services:
     name: webdis
     env: docker
     #repo: https://github.com/boring-owl2 # optional
-    region: oregon # optional (defaults to oregon)
+    #region: oregon # optional (defaults to oregon)
     plan: individual # optional (defaults to starter)
     branch: main # optional (defaults to master)
     rootDir: webdis
